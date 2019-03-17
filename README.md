@@ -25,6 +25,7 @@ dependencies {
 ```
 
 Usage:
+
 1: Establish connection:
 ```java
 Socket socket = Socket.Builder.with("ws://68.183.232.199/adonis-ws").build();
