@@ -28,7 +28,7 @@ Usage:
 
 1: Establish connection:
 ```java
-String url = (This url is usually ws://(your ip or domain)/adonis-ws)
+String url = (This url is usually "ws://(your ip or domain)/adonis-ws")
 Socket socket = Socket.Builder.with(url).build();
 socket.connect();
 ```
