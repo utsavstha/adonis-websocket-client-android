@@ -38,14 +38,14 @@ socket.connect();
 socket.onEvent(Socket.EVENT_OPEN, new Socket.OnEventListener() {
     @Override
     public void onMessage(String event) {
-	output("sonnected");
+	output("Connected");
     }
 });
 ```
 
 3: Socket Custom Events:
 ```java
-socket.onEventResponse("chat", new Socket.OnEventResponseListener() {
+socket.onEventResponse("topic_name", new Socket.OnEventResponseListener() {
     @Override
     public void onMessage(String event, String data) {
         System.out.println(data);
