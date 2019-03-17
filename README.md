@@ -20,11 +20,16 @@ allprojects {
 Add to your app module build.gradle
 ```gradle
 dependencies {
-        compile 'com.github.zurche:my-cool-lib:v0.1'
+    implementation 'com.github.utsavstha:adonis-websocket-client-android:1.1'
 }
 ```
 
-What you can do with this lib:
+Usage:
+1: Establish connection:
+```java
+Socket socket = Socket.Builder.with("ws://68.183.232.199/adonis-ws").build();
+socket.connect();
+```
 ```javascript
 Point buenosAiresObeliscoPoint = new Point((float) -34.6037389, (float) -58.3815704);
         
