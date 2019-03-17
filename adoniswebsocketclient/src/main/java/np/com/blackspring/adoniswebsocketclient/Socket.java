@@ -219,6 +219,22 @@ public class Socket {
         return false;
     }
 
+    public boolean leave(@NonNull String topic) {
+        try {
+            JSONObject text = new JSONObject();
+            JSONObject topics = new JSONObject();
+            topics.put("topic", topic);
+            text.put("t", 2);
+            text.put("d", topics);
+            Log.v(TAG, "Try to send data " + text.toString());
+
+            return realWebSocket.send(text.toString());
+        } catch (JSONException e) {
+            Log.e(TAG, "Try to send data with wrong JSON format, data: " + e);
+        }
+        return false;
+    }
+
     public void ping(long pingInterval) {
 //        timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
