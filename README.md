@@ -28,27 +28,52 @@ Usage:
 
 1: Establish connection:
 ```java
-Socket socket = Socket.Builder.with("ws://68.183.232.199/adonis-ws").build();
+String url = This url is usually ws://(your ip or domain)/adonis-ws
+Socket socket = Socket.Builder.with(url).build();
 socket.connect();
 ```
-```javascript
-Point buenosAiresObeliscoPoint = new Point((float) -34.6037389, (float) -58.3815704);
-        
-Point nycStatueOfLibertyPoint = new Point((float) 40.6892494, (float) -74.0445004);
 
-float distanceBetweenPoints = LatLonDistanceCalculator.calculateDistance(
-    buenosAiresObeliscoPoint, 
-    nycStatueOfLibertyPoint);
+2: Socket Default Events:
+```java
+socket.onEvent(Socket.EVENT_OPEN, new Socket.OnEventListener() {
+    @Override
+    public void onMessage(String event) {
+	output("sonnected");
+    }
+});
 ```
 
-<p align="center">
-  <img src="https://github.com/zurche/my-cool-lib/blob/master/device-2016-06-03-131119.png" alt="Example"/>
-</p>
+3: Socket Custom Events:
+```java
+socket.onEventResponse("chat", new Socket.OnEventResponseListener() {
+    @Override
+    public void onMessage(String event, String data) {
+        System.out.println(data);
+    }
+});
+```
+
+4: Join Topic:
+```java
+socket.join("topic_name");
+```
+
+5: Leave Topic:
+```java
+socket.leave("topic_name");
+```
+
+6: Send Message: 
+```java
+JSONObject jsonObject = new JSONObject();
+jsonObject.put("username", username);
+socket.send("topic_name", jsonObject.toString()); //Yes this has to be json.
+```
 
 License
 --------
 
-    Copyright 2016 Alejandro Zürcher
+    Copyright 2019 Utsav Shrestha
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
