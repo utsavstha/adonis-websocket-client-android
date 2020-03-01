@@ -216,12 +216,12 @@ public class Socket {
      * @return true if the message send/on socket send quest; false otherwise
      *//*
 
-    public boolean send(@NonNull String event, @NonNull String data) {
+    public boolean send(@NonNull String topic, @NonNull String event, @NonNull String data) {
         try {
             JSONObject text = new JSONObject();
             JSONObject topic = new JSONObject();
-            topic.put("topic", event);
-            topic.put("event", "message");
+            topic.put("topic", topic);
+            topic.put("event", event);
             topic.put("data", new JSONObject(data));
             text.put("t", 7);
             text.put("d", topic);
